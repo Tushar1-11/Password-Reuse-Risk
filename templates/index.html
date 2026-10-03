@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Password Reuse Risk Analyzer</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main class="shell">
+    <header><p class="eyebrow">LOCAL-ONLY SECURITY CHECK</p><h1>Password reuse, made visible.</h1><p class="lede">Analyze account passwords locally. Plaintext is never saved; only a device-bound fingerprint is stored.</p></header>
+    <section class="panel form-panel"><h2>Add an account</h2><form id="entry-form">
+      <label>Platform<input name="platform" required minlength="2" maxlength="80" autocomplete="off" placeholder="e.g. GitHub"></label>
+      <label>Password<input name="password" type="password" required autocomplete="new-password" placeholder="Enter only to check it"></label>
+      <label>Account sensitivity<select name="sensitivity"><option value="standard">Standard</option><option value="important">Important</option><option value="critical">Critical</option></select></label>
+      <button type="submit">Analyze locally</button><p id="form-message" class="message" aria-live="polite"></p>
+    </form></section>
+    <section class="summary" aria-label="Risk summary"><article><span id="accounts">0</span>accounts tracked</article><article><span id="reused">0</span>accounts reused</article><article><span id="highest">Low</span>highest risk</article></section>
+    <section class="panel"><div class="section-title"><h2>Reuse alerts</h2><p>Groups with the same protected fingerprint.</p></div><div id="alerts" class="alerts"></div></section>
+    <section class="panel"><div class="section-title"><h2>Account records</h2><p>Delete records that no longer apply.</p></div><div class="table-wrap"><table><thead><tr><th>Platform</th><th>Sensitivity</th><th>Risk</th><th>Matches</th><th></th></tr></thead><tbody id="entries"></tbody></table></div></section>
+  </main><script src="{{ url_for('static', filename='app.js') }}"></script>
+</body></html>

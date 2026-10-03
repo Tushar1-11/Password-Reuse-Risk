@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+*.pyc
+instance/password_risk.sqlite3
+instance/fingerprint.key
+model/*.keras
+model/preprocessing.joblib
+model/metadata.json
+.env
